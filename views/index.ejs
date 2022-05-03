@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("layouts/header.ejs"); -%> 
+<body>
+    <%- include("layouts/navbar.ejs"); -%>
+    <br> 
+    <div class="container-fluid">
+        <div class="card" style="width: 100%;">
+            <div class="container-fluid d-flex mt-2 mb-2" style="justify-content: space-between;">
+              <h4>My Contact</h4>
+              <a class="text-reset btn btn-success" href="/posts/new" ><i class="fa-solid fa-plus" style="color: #fff;"></i></a>
+            </div>
+            <ul class="list-group list-group-flush">
+              <% for(let i = 0; i<contacts.length; i++) { %>
+              <li class="list-group-item">
+                  <div class="d-flex"  style="justify-content: space-between;">
+                    <div class="content">
+                        <h5>Name : <%= contacts[i].name %></h5>
+                    </div>
+                    <div class="btn-group">
+                      <a href="/delete/<%= contacts[i]._id %>" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                      <a href="/edit/<%= contacts[i]._id %>" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                    </div>
+                  </div>
+                  <p>Email : <%= contacts[i].email%></p>
+                  
+              </li>
+              <% } %>
+            </ul>
+        </div>
+    </div>
+    
+    <%- include("layouts/scripts.ejs"); -%> 
+    <%- include("layouts/footer.ejs"); -%> 
+</body>
+</html>
